@@ -29,7 +29,7 @@
           type: [ Speciman ]
           inverted: true
         damage:
-          groups:
+          types:
             Caustic: 0.5
             Poison: 2
   footstepSound:
