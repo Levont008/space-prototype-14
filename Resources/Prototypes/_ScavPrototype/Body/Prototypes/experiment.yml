@@ -18,10 +18,10 @@
       - right_leg
       - left_leg
       organs:
-        heart: OrganAnimalHeart
+        heart: OrganSpecimanHeart
         lungs: OrganHumanLungs
-        stomach: OrganReptilianStomach
-        liver: OrganAnimalLiver
+        stomach: OrganSpecimanStomach
+        liver: OrganSpecimanLiver
         kidneys: OrganHumanKidneys
     right_arm:
       part: RightArmSpeciman

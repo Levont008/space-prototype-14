@@ -1,0 +1,15 @@
+- type: reaction
+  id: YellowBloodBreakdown
+  source: true
+  requiredMixerCategories:
+  - Centrifuge
+  reactants:
+    YellowBlood:
+      amount: 30
+  products:
+    Water: 14
+    Phenol: 1
+    Sugar: 2
+    Hydrogen: 1.5
+    CarbonDioxide: 5.5
+    Protein: 6

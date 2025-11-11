@@ -1,0 +1,82 @@
+- type: entity
+  id: BaseSpecimanOrgan
+  parent: BaseAnimalOrgan
+  abstract: true
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: YellowBlood
+          Quantity: 5
+  - type: FlavorProfile
+    flavors:
+      - bitter
+
+- type: entity
+  id: OrganSpecimanStomach
+  parent: BaseSpecimanOrgan
+  name: жёлтый желудок
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: stomach
+  - type: Organ
+  - type: SolutionContainerManager
+    solutions:
+      stomach:
+        maxVol: 40
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: YellowBlood
+          Quantity: 5
+  - type: Stomach
+  - type: Metabolizer
+    maxReagents: 3
+    metabolizerTypes: [ Animal, Speciman ]
+    groups:
+    - id: Food
+    - id: Drink
+  - type: Item
+    size: Small
+    heldPrefix: stomach
+
+- type: entity
+  id: OrganSpecimanLiver
+  parent: BaseSpecimanOrgan
+  name: жёлтая печень
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: liver
+  - type: Organ
+  - type: Metabolizer
+    maxReagents: 1
+    metabolizerTypes: [ Animal, Speciman ]
+    groups:
+    - id: Alcohol
+  - type: Item
+    size: Small
+    heldPrefix: liver
+
+- type: entity
+  id: OrganSpecimanHeart
+  parent: BaseSpecimanOrgan
+  name: жёлтое сердце
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: heart-on
+  - type: Organ
+  - type: Metabolizer
+    maxReagents: 6
+    metabolizerTypes: [ Animal, Speciman ]
+    groups:
+    - id: Medicine
+    - id: Poison
+    - id: Narcotic
+  - type: Item
+    size: Small
+    heldPrefix: heart
