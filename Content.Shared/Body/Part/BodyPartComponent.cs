@@ -4,6 +4,9 @@ using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
+//SpacePrototype Changes
+using Content.Shared.ScavPrototype.NewMedical.Body.Part;
+
 namespace Content.Shared.Body.Part;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
@@ -16,6 +19,10 @@ public sealed partial class BodyPartComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public EntityUid? Body;
+
+    //SpacePrototype Change
+    [DataField]
+    public BodyPartComposition PartComposition = BodyPartComposition.Organic;
 
     [DataField, AutoNetworkedField]
     public BodyPartType PartType = BodyPartType.Other;

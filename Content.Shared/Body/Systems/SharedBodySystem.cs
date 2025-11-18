@@ -5,6 +5,9 @@ using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
+//SpacePrototype Changes
+using Robust.Shared.Random;
+
 namespace Content.Shared.Body.Systems;
 
 public abstract partial class SharedBodySystem : EntitySystem
@@ -35,6 +38,9 @@ public abstract partial class SharedBodySystem : EntitySystem
     [Dependency] protected readonly SharedContainerSystem Containers = default!;
     [Dependency] protected readonly SharedTransformSystem SharedTransform = default!;
     [Dependency] protected readonly StandingStateSystem Standing = default!;
+
+    //SpacePrototype Changes
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
     {

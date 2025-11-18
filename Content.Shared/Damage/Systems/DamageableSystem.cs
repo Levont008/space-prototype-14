@@ -9,6 +9,13 @@ using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
+//SpacePrototype Changes
+using Content.Shared.Body.Systems;
+using Content.Shared.Body.Components;
+using Content.Shared.Body.Part;
+using Robust.Shared.Random;
+using Robust.Shared.Timing;
+
 namespace Content.Shared.Damage.Systems;
 
 public sealed partial class DamageableSystem : EntitySystem
@@ -20,6 +27,13 @@ public sealed partial class DamageableSystem : EntitySystem
     [Dependency] private readonly IConfigurationManager _config = default!;
     [Dependency] private readonly SharedChemistryGuideDataSystem _chemistryGuideData = default!;
     [Dependency] private readonly SharedExplosionSystem _explosion = default!;
+
+    //SpacePrototype Changes
+    [Dependency] private readonly SharedBodySystem _body = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IComponentFactory _factory = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+    private EntityQuery<BodyComponent> _bodyQuery;
 
     private EntityQuery<AppearanceComponent> _appearanceQuery;
     private EntityQuery<DamageableComponent> _damageableQuery;

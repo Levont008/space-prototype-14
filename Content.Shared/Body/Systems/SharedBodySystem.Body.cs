@@ -15,6 +15,9 @@ using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Utility;
 
+//SpacePrototype Changes
+using Content.Shared.Mobs.Systems;
+
 namespace Content.Shared.Body.Systems;
 
 public partial class SharedBodySystem
@@ -29,6 +32,9 @@ public partial class SharedBodySystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly GibbingSystem _gibbingSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
+
+    //SpacePrototype Changes
+    [Dependency] private readonly MobStateSystem _mobState = default!;
 
     private const float GibletLaunchImpulse = 8;
     private const float GibletLaunchImpulseVariance = 3;
@@ -334,5 +340,68 @@ public partial class SharedBodySystem
         }
         _audioSystem.PlayPredicted(gibSoundOverride, bodyTransform.Coordinates, null);
         return gibs;
+    }
+
+    //SpacePrototype Chenges
+    /// <summary>
+    /// Gets all child body parts of this entity that have component T, including the root entity if it has component T.
+    /// </summary>
+    public IEnumerable<(EntityUid Id, BodyPartComponent BodyPart, T Component)> GetBodyChildrenWithComponent<T>(
+        EntityUid? id,
+        BodyComponent? body = null,
+        BodyPartComponent? rootPart = null)
+        where T : IComponent
+    {
+        if (id is null
+            || !Resolve(id.Value, ref body, logMissing: false)
+            || body is null
+            || body.RootContainer == null
+            || body.RootContainer.ContainedEntity is null
+            || !Resolve(body.RootContainer.ContainedEntity.Value, ref rootPart))
+        {
+            yield break;
+        }
+
+        foreach (var child in GetBodyPartChildrenWithComponent<T>(body.RootContainer.ContainedEntity.Value, rootPart))
+        {
+            yield return child;
+        }
+    }
+
+    /// <summary>
+    /// Returns all body part components for this entity including itself that have component T.
+    /// </summary>
+    public IEnumerable<(EntityUid Id, BodyPartComponent BodyPart, T Component)> GetBodyPartChildrenWithComponent<T>(
+        EntityUid partId,
+        BodyPartComponent? part = null)
+        where T : IComponent
+    {
+        if (!Resolve(partId, ref part, logMissing: false))
+            yield break;
+
+        var query = GetEntityQuery<T>();
+
+        // Check if the current part has the component
+        if (query.TryGetComponent(partId, out var component))
+            yield return (partId, part, component);
+
+        foreach (var slotId in part.Children.Keys)
+        {
+            var containerSlotId = GetPartSlotContainerId(slotId);
+
+            if (Containers.TryGetContainer(partId, containerSlotId, out var container))
+            {
+                foreach (var containedEnt in container.ContainedEntities)
+                {
+                    if (!TryComp(containedEnt, out BodyPartComponent? childPart))
+                        continue;
+
+                    foreach (var value in GetBodyPartChildrenWithComponent<T>(containedEnt, childPart))
+                    {
+                        yield return value;
+                    }
+                }
+            }
+        }
     }
 }

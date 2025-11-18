@@ -7,6 +7,11 @@ using Content.Shared.Radiation.Events;
 using Content.Shared.Rejuvenate;
 using Robust.Shared.GameStates;
 
+//SpacePrototype Changes
+using Content.Shared.Body.Systems;
+using Content.Shared.Body.Components;
+using Content.Shared.Body.Part;
+
 namespace Content.Shared.Damage.Systems;
 
 public sealed partial class DamageableSystem
@@ -21,6 +26,9 @@ public sealed partial class DamageableSystem
 
         _appearanceQuery = GetEntityQuery<AppearanceComponent>();
         _damageableQuery = GetEntityQuery<DamageableComponent>();
+
+        //SpacePrototype Changes
+        _bodyQuery = GetEntityQuery<BodyComponent>();
 
         // Damage modifier CVars are updated and stored here to be queried in other systems.
         // Note that certain modifiers requires reloading the guidebook.
