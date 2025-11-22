@@ -1,0 +1,27 @@
+- type: entity
+  id: Shower
+  parent: BaseWallmountMetallic
+  name: душ
+  description: Настенный душ. Из него льется теплая водичка.
+  components:
+  - type: Sprite
+    sprite: _ScavPrototype/Objects/Structures/Furniture/shower.rsi
+    noRot: true
+    layers:
+      - state: water
+      - state: shower
+      - state: mist
+  - type: Appearance
+  - type: AmbientSound
+    volume: -6
+    range: 5
+    sound:
+      path: /Audio/_ScavPrototype/Machines/shower1.ogg
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 200
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
