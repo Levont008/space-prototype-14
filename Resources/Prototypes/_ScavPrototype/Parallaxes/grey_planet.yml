@@ -39,3 +39,18 @@
         configPath: "/Prototypes/Parallaxes/parallax_config.toml"
       slowness: 0.875
   layersLQUseHQ: false
+
+- type: parallax
+  id: GreyPlanetLanding
+  layers:
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/_ScavPrototype/Parallaxes/GreyPlanetLand.png"
+      slowness: 0.1
+      scale: 4,4
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/Parallaxes/noise.png"
+      slowness: 0.3
+      scale: "1.5, 1.5"
+      scrolling: "0.1, -0.05"
