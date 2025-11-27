@@ -1,0 +1,43 @@
+#---------База
+- type: marking
+  id: MilkyEarsBase
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  forcedColoring: true
+  followSkinColor: true
+  speciesRestriction: [Milky]
+  sprites:
+  - sprite: _ScavPrototype/Mobs/Species/Milky/milky_parts.rsi
+    state: ears_milkybase
+
+- type: marking
+  id: MilkyTailBase
+  bodyPart: Tail
+  markingCategory: Tail
+  forcedColoring: true
+  followSkinColor: true
+  speciesRestriction: [Milky]
+  sprites:
+  - sprite: _ScavPrototype/Mobs/Species/Milky/milky_parts.rsi
+    state: tail_milkybase
+
+- type: marking
+  id: MilkyEyesBase
+  bodyPart: Eyes
+  markingCategory: Head
+  forcedColoring: true
+  speciesRestriction: [Milky]
+  sprites:
+  - sprite: _ScavPrototype/Mobs/Species/Milky/parts.rsi
+    state: eyes
+
+- type: marking
+  id: MilkyFinBase
+  bodyPart: Chest
+  markingCategory: Chest
+  forcedColoring: true
+  followSkinColor: true
+  speciesRestriction: [Milky]
+  sprites:
+  - sprite: _ScavPrototype/Mobs/Species/Milky/milky_parts.rsi
+    state: fin_milkybase

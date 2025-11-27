@@ -1,0 +1,35 @@
+- type: tile
+  id: FloorGreyPlanetDirt
+  name: tiles-dirt-planet-floor
+  sprite: /Textures/_ScavPrototype/Tiles/Planet/GravelLands/dirt.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true
+  indestructible: true
+
+- type: tile
+  id: FloorGreyPlanetGravel
+  name: tiles-low-desert-floor
+  sprite: /Textures/_ScavPrototype/Tiles/Planet/GravelLands/gravel.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepAsteroid
+  heatCapacity: 10000
+  weather: true
+  indestructible: true

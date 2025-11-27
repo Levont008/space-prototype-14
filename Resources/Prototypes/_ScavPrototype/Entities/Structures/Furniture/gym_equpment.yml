@@ -1,0 +1,73 @@
+# - type: entity
+#   name: скамья для жима
+#   parent: SeatBase
+#   id: Fitnesseight
+#   description: Резиновая скамья с металическими прутьями для закрепления штанги. Время подкачатся.
+#   components:
+#   - type: Damageable
+#     damageContainer: Inorganic
+#     damageModifierSet: StrongMetallic
+#   - type: Destructible
+#     thresholds:
+#     - trigger:
+#         !type:DamageTrigger
+#         damage: 200
+#       behaviors:
+#         - !type:DoActsBehavior
+#           acts: [ "Destruction" ]
+#     - trigger:
+#         !type:DamageTrigger
+#         damage: 100
+#       behaviors:
+#       - !type:DoActsBehavior
+#         acts: ["Destruction"]
+#       - !type:PlaySoundBehavior
+#         sound:
+#           collection: MetalBreak
+#       - !type:SpawnEntitiesBehavior
+#         spawn:
+#           SheetSteel1:
+#             min: 3
+#             max: 5
+#   - type: Physics
+#     bodyType: Static
+#   - type: Transform
+#     anchored: true
+#   - type: Sprite
+#     sprite: _ScavPrototype/Objects/Structures/Furniture/fitnesseight.rsi
+#     noRot: true
+#     state: icon
+#   - type: ContainerContainer
+#     containers:
+#       barbell_slot: !type:ContainerSlot {}
+#   - type: ItemMapper
+#     mapLayers:
+#       barbell:
+#         whitelist:
+#           tags:
+#             - Barbell
+#   - type: ItemSlots
+#     slots:
+#       barbell_slot:
+#         name: Штанга
+#         whitelist:
+#           tags:
+#             - Barbell
+#         priority: 1
+#   - type: ContainerFill
+#     containers:
+#       barbell_slot: Barbell
+
+- type: entity
+  name: штанга
+  parent: BaseItem
+  id: Barbell
+  description: Тяжелая стальная штанга. Идеальна для упражнений.
+  components:
+  - type: Sprite
+    sprite: _ScavPrototype/Objects/Structures/Furniture/fitnesseight.rsi
+    state: barbell
+  - type: MultiHandedItem
+  - type: Tag
+    tags:
+    - Barbell

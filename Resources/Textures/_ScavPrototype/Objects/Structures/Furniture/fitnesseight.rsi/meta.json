@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Get from https://github.com/goonstation/goonstation/blob/5d3d73279fdd6a4299b293f8645967c777772e90/icons/obj/gym_objs.dmi",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "barbell"
+    },
+    {
+      "name": "barbell_animation",
+      "delays": [
+        [
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ]
+      ]
+    }
+  ]
+}

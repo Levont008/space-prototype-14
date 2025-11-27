@@ -65,8 +65,20 @@
       types:
         Bloodloss: 0.75
         Cold: 0.05
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    damageCap: 60
+    damage:
+      types:
+        Heat: -0.05
+        Cold: -0.06
+        Shock: -0.03
+      groups:
+        Brute: -0.08
+        Toxin: -0.05
   - type: Thirst
-    baseDecayRate: 0.21
+    baseDecayRate: 0.2
   - type: ScaleVisuals
     scale: 0.9, 0.9
   - type: Tag
@@ -116,11 +128,6 @@
           32:
             sprite: Mobs/Species/Vulpkanin/displacement.rsi
             state: hand
-      eyes:
-        sizeMaps:
-          32:
-            sprite: Mobs/Species/Vulpkanin/displacement.rsi
-            state: eyes
       belt:
         sizeMaps:
           32:

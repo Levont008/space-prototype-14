@@ -1,0 +1,49 @@
+- type: body
+  id: Milky
+  name: "Milky"
+  root: torso
+  slots:
+    head:
+      part: HeadMilky
+      connections:
+      - torso
+      organs:
+        brain: OrganHumanBrain
+        eyes: OrganHumanEyes
+    torso:
+      part: TorsoMilky
+      connections:
+      - right_arm
+      - left_arm
+      - right_leg
+      - left_leg
+      organs:
+        heart: OrganSpecimanHeart
+        lungs: OrganHumanLungs
+        stomach: OrganSpecimanStomach
+        liver: OrganSpecimanLiver
+        kidneys: OrganHumanKidneys
+    right_arm:
+      part: RightArmMilky
+      connections:
+      - right_hand
+    left_arm:
+      part: LeftArmMilky
+      connections:
+      - left_hand
+    right_hand:
+      part: RightHandMilky
+    left_hand:
+      part: LeftHandMilky
+    right_leg:
+      part: RightLegMilky
+      connections:
+      - right_foot
+    left_leg:
+      part: LeftLegMilky
+      connections:
+      - left_foot
+    right_foot:
+      part: RightFootMilky
+    left_foot:
+      part: LeftFootMilky

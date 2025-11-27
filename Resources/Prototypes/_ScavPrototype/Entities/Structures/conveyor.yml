@@ -1,0 +1,66 @@
+- type: entity
+  id: RunningTrack
+  name: Беговая дорожка
+  description: Беговая дорожка с переключтелем направления. Идеальна для занятий бегом в закрытом помещении.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    sprite: Structures/conveyor.rsi
+    state: conveyor_stopped_cw
+    drawdepth: HighFloorObjects
+  - type: ApcPowerReceiver
+  - type: ExtensionCableReceiver
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      conveyor:
+        shape: !type:PolygonShape
+          vertices:
+          - -0.50,-0.50
+          - 0.50,-0.50
+          - 0.50,0.50
+          - -0.50,0.50
+        layer:
+        - ConveyorMask
+        hard: False
+  - type: Conveyor
+    speed: 3.5
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: WirelessNetworkConnection
+    range: 200
+  - type: DeviceLinkSink
+    ports:
+      - Reverse
+      - Forward
+      - Off
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ConveyorVisuals.State:
+        enum.ConveyorState.Off:
+          Off: { state: conveyor_stopped_cw }
+          Forward: { state: conveyor_started_cw }
+          Reverse: { state: conveyor_started_cw_r }
+  - type: Construction
+    graph: ConveyorGraph
+    node: entity
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      # if ConveyorBeltAssembly becomes craftable, maybe spawn some of the ingredients?
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]

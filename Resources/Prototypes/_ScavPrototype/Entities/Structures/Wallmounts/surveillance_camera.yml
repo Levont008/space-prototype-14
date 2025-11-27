@@ -1,0 +1,69 @@
+- type: entity
+  parent: SurveillanceCameraBase
+  id: ReinforcedSurveillanceCameraBase
+  name: укрепленная камера
+  abstract: true
+  components:
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
+
+- type: entity
+  parent: ReinforcedSurveillanceCameraBase
+  id: SurveillanceCameraContaiment
+  name: укрепленная камера
+  suffix: Содержание
+  components:
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: SurveillanceCameraContaiment
+    transmitFrequencyId: SurveillanceCamera
+  - type: SurveillanceCamera
+    networkSet: true
+  - type: SurveillanceCameraMicrophone
+    blacklist:
+      components:
+        - SurveillanceCamera
+        - SurveillanceCameraMonitor
+        - RadioSpeaker
+  - type: ActiveListener
+    range: 10
+
+- type: entity
+  parent: ReinforcedSurveillanceCameraBase
+  id: SurveillanceCameraPhysicalTesting
+  name: укрепленная камера
+  suffix: Физ. Тестирование
+  components:
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: SurveillanceCameraPhysicalTesting
+    transmitFrequencyId: SurveillanceCamera
+  - type: SurveillanceCamera
+    networkSet: true
+
+- type: entity
+  parent: ReinforcedSurveillanceCameraBase
+  id: SurveillanceCameraPsyhoTesting
+  name: укрепленная камера
+  suffix: Псих. Тестирование
+  components:
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: SurveillanceCameraPsyhoTesting
+    transmitFrequencyId: SurveillanceCamera
+  - type: SurveillanceCamera
+    networkSet: true
+
+- type: entity
+  parent: ReinforcedSurveillanceCameraBase
+  id: SurveillanceCameraIntermediate
+  name: укрепленная камера
+  suffix: Промежуточная зона
+  components:
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: SurveillanceCameraIntermediate
+    transmitFrequencyId: SurveillanceCamera
+  - type: SurveillanceCamera
+    networkSet: true

@@ -42,3 +42,39 @@
     - type: WiresPanel
     - type: SurveillanceCameraRouter
       subnetFrequency: SurveillanceCameraImplant
+
+- type: entity
+  parent: SurveillanceCameraRouterBase
+  id: SurveillanceCameraRouterContaiment
+  name: маршрутизатор камер (содержание)
+  suffix: Содержание
+  components:
+    - type: SurveillanceCameraRouter
+      subnetFrequency: SurveillanceCameraContaiment
+
+- type: entity
+  parent: SurveillanceCameraRouterBase
+  id: SurveillanceCameraRouterPhysicalTesting
+  name: маршрутизатор камер (Физ. Тестирование)
+  suffix: Физ. Тестирование
+  components:
+    - type: SurveillanceCameraRouter
+      subnetFrequency: SurveillanceCameraPhysicalTesting
+
+- type: entity
+  parent: SurveillanceCameraRouterBase
+  id: SurveillanceCameraRouterPsyhoTesting
+  name: маршрутизатор камер (Псих. Тестирование)
+  suffix: Псих. Тестирование
+  components:
+    - type: SurveillanceCameraRouter
+      subnetFrequency: SurveillanceCameraPsyhoTesting
+
+- type: entity
+  parent: SurveillanceCameraRouterBase
+  id: SurveillanceCameraRouterIntermediate
+  name: маршрутизатор камер (Промежуточная зона)
+  suffix: Промежуточная зона
+  components:
+    - type: SurveillanceCameraRouter
+      subnetFrequency: SurveillanceCameraIntermediate

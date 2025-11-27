@@ -1,0 +1,94 @@
+- type: entity
+  id: Shower
+  parent: BaseWallmountMetallic
+  name: душ
+  description: Настенный душ. Из него льется теплая водичка.
+  components:
+  - type: Sprite
+    sprite: _ScavPrototype/Objects/Structures/Furniture/shower.rsi
+    noRot: true
+    layers:
+      - state: water
+        map: [ "enum.ToggleableVisuals.Layer" ]
+      - state: shower
+#      - state: mist
+#        map: [ "enum.ToggleableVisuals.Layer" ]
+  - type: Appearance
+  - type: ItemToggleActiveSound
+    activeSound:
+      path: /Audio/_ScavPrototype/Machines/shower1.ogg
+    volume: -6
+    range: 5
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 200
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: { visible: true }
+          False: { visible: false }
+  - type: ItemToggle
+    predictable: false
+    soundActivate:
+      collection: valveSqueak
+    soundDeactivate:
+      collection: valveSqueak
+  - type: UseDelay
+
+- type: entity
+  id: FloorDryer
+  name: напольная сушилка
+  description: При активации обдает вас потоками горячего воздуха. Быстро сушит шерсть.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _ScavPrototype/Objects/Structures/Furniture/dryer.rsi
+    state: icon
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 200
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 100
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+          - !type:PlaySoundBehavior
+            sound:
+              collection: MetalBreak
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/_ScavPrototype/Machines/drying.ogg
+    volume: -6
+    range: 5
+  - type: TriggerOnSignal
+  - type: DeviceLinkSink
+    ports:
+    - Trigger
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: WirelessNetworkConnection
+    range: 200

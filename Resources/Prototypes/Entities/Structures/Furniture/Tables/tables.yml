@@ -411,6 +411,9 @@
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepTile
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
 
 - type: entity
   id: TablePlasmaGlass

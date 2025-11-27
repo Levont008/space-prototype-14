@@ -1,0 +1,179 @@
+- type: entity
+  id: PoweredWallLightReinforced
+  name: укрепленный светильник
+  description: Лампочка под слоем укрепленного стекла.
+  suffix: Обычный
+  components:
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection: GlassSmash
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Sprite
+    sprite: Structures/Wallmounts/Lighting/light_tube.rsi
+    drawdepth: WallMountedItems
+    layers:
+    - state: base
+    - state: glow
+      shader: unshaded
+      map: ["enum.PowerDeviceVisualLayers.Powered"]
+    state: base
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: LitOnPowered
+  - type: PointLight
+    color: "#FFE4CE" # 5000K color temp
+    energy: 0.8
+    radius: 10
+    softness: 1
+    offset: "0, -0.5"
+    enabled: false
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: StrongMetallic
+  - type: RCDDeconstructable
+    cost: 5
+    delay: 4
+    fx: EffectRCDDeconstruct2
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,0.35,0.4,0.5"
+        density: 190
+        mask:
+        - None
+        layer:
+        - TabletopMachineLayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors: #excess damage, don't spawn entities.
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 2
+            max: 2
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+  - type: ApcPowerReceiver
+  - type: ExtensionCableReceiver
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: SmartLight
+  - type: WirelessNetworkConnection
+    range: 200
+  - type: DeviceLinkSink
+    ports:
+      - On
+      - Off
+      - Toggle
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wallmount
+
+- type: entity
+  name: укрепленный маленький светильник
+  description: Лампочка под слоем укрепленного стекла.
+  id: SmallLightReinforced
+  suffix: Обычный
+  parent: PoweredWallLightReinforced
+  components:
+    - type: AmbientSound
+      enabled: false
+      volume: -15
+      range: 2
+      sound:
+        path: /Audio/Ambience/Objects/light_hum.ogg
+    - type: AmbientOnPowered
+    - type: Sprite
+      sprite: Structures/Wallmounts/Lighting/light_small.rsi
+      layers:
+      - state: base
+      - state: glow
+        shader: unshaded
+        map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - type: PointLight
+      enabled: false
+      energy: 1.0
+      radius: 6
+      softness: 1.1
+      color: "#FF8A0C"
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeAabb
+            bounds: "-0.1,0.255,0.1,0.5"
+          density: 190
+          mask:
+          - None
+          layer:
+          - TabletopMachineLayer
+    - type: Destructible
+      thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 100
+        behaviors: #excess damage, don't spawn entities.
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 25
+        behaviors:
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            SheetSteel1:
+              min: 1
+              max: 1
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+
+- type: entity
+  name: укрепленный маленький светильник
+  description: Лампочка под слоем укрепленного стекла.
+  id: WarmSmallLightReinforced
+  suffix: Тёплый
+  parent: SmallLightReinforced
+  components:
+    - type: Sprite
+      sprite: Structures/Wallmounts/Lighting/light_small.rsi
+      layers:
+      - state: base
+      - state: glow
+        shader: unshaded
+        color: "#FF8A0C"
+        map: ["enum.PowerDeviceVisualLayers.Powered"]
+    - type: PointLight
+      enabled: false
+      radius: 6
+      energy: 1
+      softness: 3
+      color: "#FF8A0C"

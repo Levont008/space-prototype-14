@@ -2,3 +2,23 @@
   id: SurveillanceCameraImplant
   name: Камеры имплантов слежения
   frequency: 3200
+
+- type: deviceFrequency
+  id: SurveillanceCameraContaiment
+  name: Камеры комнат содержания
+  frequency: 3204
+
+- type: deviceFrequency
+  id: SurveillanceCameraPhysicalTesting
+  name: Камеры(Физ. тестирование)
+  frequency: 3210
+
+- type: deviceFrequency
+  id: SurveillanceCameraPsyhoTesting
+  name: Камеры(Псих. тестирование)
+  frequency: 3211
+
+- type: deviceFrequency
+  id: SurveillanceCameraIntermediate
+  name: Камеры(Промежуточная зона)
+  frequency: 3212

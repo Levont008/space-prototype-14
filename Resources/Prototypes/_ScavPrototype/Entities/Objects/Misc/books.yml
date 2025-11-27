@@ -1,0 +1,33 @@
+- type: entity
+  parent: BookBase
+  id: BookFatAndThin
+  name: Толстый и Тонкий
+  description: Небольшая книга. По внешнему виду можно судить что она свеже напечатаная. На обложке изображены два толстый и тонкий человека, на заднем фоне видно поезд. Имеется подпись "А.П. Чехов"
+  components:
+    - type: Sprite
+      sprite: Objects/Misc/books.rsi
+      layers:
+      - state: paper
+      - state: cover_base
+        color: "#a6161d"
+      - state: decor_bottom
+        color: "#7c5c36"
+      - state: icon_scmmd
+    - type: Paper
+      content: book-text-fat-and-thin
+
+- type: entity
+  parent: BookBase
+  id: BookStudent
+  name: Студент
+  description: Небольшая книга. По внешнему виду можно судить что она свеже напечатаная. Оранжевая книга с большими буквами посередине "СТУДЕНТ". Имеется подпись "А.П. Чехов"
+  components:
+    - type: Sprite
+      sprite: Objects/Misc/books.rsi
+      layers:
+      - state: paper
+      - state: cover_strong
+        color: "#b7653d"
+      - state: icon_briefcase
+    - type: Paper
+      content: book-text-student
