@@ -1,0 +1,175 @@
+- type: entity
+  parent: FoodMeatRawBase
+  id: FoodYellowMeat
+  name: сырое жёлтое мясо
+  description: Кусок сырого жёлтого мяса. О боже...
+  components:
+  - type: Sprite
+    sprite: _ScavPrototype/Objects/Consumable/Food/meat.rsi
+    state: plain
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 7
+        - ReagentId: YellowBlood
+          Quantity: 6
+        - ReagentId: Fat
+          Quantity: 6
+  - type: SliceableFood
+    count: 3
+    slice: FoodYellowMeatCutlet
+  - type: InternalTemperature
+    conductivity: 0.43
+  - type: Construction
+    graph: YellowMeatSteak
+    node: start
+    defaultTarget: meat steak
+  - type: Tag
+    tags:
+    - Meat
+  - type: Item
+    sprite: _ScavPrototype/Objects/Consumable/Food/meat.rsi
+    storedOffset: -2,1
+    inhandVisuals:
+      left:
+      - state: plain-inhand-left
+      right:
+      - state: plain-inhand-right
+  - type: FlavorProfile
+    flavors:
+      - meaty
+      - bitter
+      - terrible
+
+- type: entity
+  parent: FoodMeatCooked
+  id: FoodYellowMeatCooked
+  name: жёлтый стейк
+  description: Зажаренный кусок жёлтого мяса. Пахнет странно, но знакомо...
+  components:
+  - type: Tag
+    tags:
+    - Cooked
+    - Meat
+    - Steak
+  - type: Sprite
+    sprite: _ScavPrototype/Objects/Consumable/Food/meat.rsi
+    layers:
+    - state: plain-cooked
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 8
+        - ReagentId: Protein
+          Quantity: 4
+        - ReagentId: YellowBlood
+          Quantity: 3
+  - type: SliceableFood
+    count: 3
+    slice: FoodYellowMeatCutletCooked
+  - type: Construction
+    graph: YellowMeatSteak
+    node: meat steak
+  - type: Item
+    sprite: _ScavPrototype/Objects/Consumable/Food/meat.rsi
+    storedOffset: -2,1
+    inhandVisuals:
+      left:
+      - state: plain-cooked-inhand-left
+      right:
+      - state: plain-cooked-inhand-right
+  - type: FlavorProfile
+    flavors:
+      - meaty
+      - terrible
+
+- type: entity
+  parent: FoodMeatBase
+  id: FoodYellowMeatCutlet
+  name: сырая жёлтая вырезка вырезка
+  description: Котлета из сырого жёлтого мяса. Господи, кто это сделал?
+  components:
+  - type: Tag
+    tags:
+    - Raw
+    - Cutlet
+    - Meat
+  - type: Sprite
+    sprite: _ScavPrototype/Objects/Consumable/Food/meat.rsi
+    state: cutlet
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: UncookedAnimalProteins
+          Quantity: 2
+        - ReagentId: Fat
+          Quantity: 1
+        - ReagentId: YellowBlood
+          Quantity: 2
+  - type: Construction
+    graph: YellowCutlet
+    node: start
+    defaultTarget: cutlet
+  - type: Item
+    sprite: _ScavPrototype/Objects/Consumable/Food/meat.rsi
+    size: Tiny
+    shape:
+    - 0,0,0,0
+    inhandVisuals:
+      left:
+      - state: generic-pink-inhand-left
+      right:
+      - state: generic-pink-inhand-right
+  - type: FlavorProfile
+    flavors:
+      - meaty
+      - bitter
+      - terrible
+
+- type: entity
+  parent: FoodMeatBase
+  id: FoodYellowMeatCutletCooked
+  name: жёлтая котлета
+  description: Приготовленная жёлтая котлета. Требуется немного приправы.
+  components:
+  - type: Tag
+    tags:
+    - Cooked
+    - Cutlet
+    - Meat
+  - type: Sprite
+    sprite: _ScavPrototype/Objects/Consumable/Food/meat.rsi
+    state: cutlet-cooked
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 2
+        - ReagentId: Protein
+          Quantity: 2
+  - type: Construction
+    graph: YellowCutlet
+    node: cutlet
+  - type: Item
+    sprite: _ScavPrototype/Objects/Consumable/Food/meat.rsi
+    size: Tiny
+    shape:
+    - 0,0,0,0
+    storedOffset: -1,1
+    inhandVisuals:
+      left:
+      - state: generic-pink-inhand-left
+        color: "#5B3614"
+      right:
+      - state: generic-pink-inhand-right
+        color: "#5B3614"
+  - type: FlavorProfile
+    flavors:
+      - meaty
+      - terrible

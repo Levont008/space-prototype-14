@@ -10,10 +10,10 @@
   femaleFirstNames: SpecimanUnisex
   skinColoration: TintedHues
   naming: First
-  minAge: 9
-  youngAge: 10
-  oldAge: 20
-  maxAge: 35
+  minAge: 10
+  youngAge: 15
+  oldAge: 25
+  maxAge: 40
 
 - type: speciesBaseSprites
   id: MobMilkySprites

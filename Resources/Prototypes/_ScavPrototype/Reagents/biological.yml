@@ -3,7 +3,7 @@
   name: reagent-name-yellow-blood
   group: Biological
   desc: reagent-desc-yellow-blood
-  flavor: bitter
+  flavor: acid
   color: "#FFCC00"
   recognizable: true
   standsout: true
