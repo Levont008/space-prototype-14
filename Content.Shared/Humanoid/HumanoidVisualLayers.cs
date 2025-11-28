@@ -13,6 +13,7 @@ namespace Content.Shared.Humanoid
         UndergarmentTop,
         UndergarmentBottom,
         Chest,
+        Groin,
         Head,
         Snout,
         SnoutCover, // things layered over snouts (i.e. noses)

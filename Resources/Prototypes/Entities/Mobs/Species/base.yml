@@ -9,6 +9,9 @@
   id: BaseMobSpecies
   abstract: true
   components:
+  # Space Prototype Changes start
+  - type: Targeting
+  # Space Prototype Changes end
   - type: Sprite
     layers:
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
