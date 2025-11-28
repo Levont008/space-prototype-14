@@ -1,0 +1,31 @@
+- type: constructionGraph
+  id: YellowMeatSteak
+  start: start
+  graph:
+
+  - node: start
+    edges:
+    - to: meat steak
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 335
+
+  - node: meat steak
+    entity: FoodYellowMeatCooked
+
+- type: constructionGraph
+  id: YellowCutlet
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: cutlet
+      completed:
+      - !type:PlaySound
+        sound: /Audio/Effects/sizzle.ogg
+      steps:
+      - minTemperature: 335
+  - node: cutlet
+    entity: FoodYellowMeatCutletCooked

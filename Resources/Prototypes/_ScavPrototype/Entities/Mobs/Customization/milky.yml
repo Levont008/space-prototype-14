@@ -41,3 +41,66 @@
   sprites:
   - sprite: _ScavPrototype/Mobs/Species/Milky/milky_parts.rsi
     state: fin_milkybase
+
+#--------Шрамы
+- type: marking
+  id: MilkyEarScarRight
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  forcedColoring: true
+  followSkinColor: true
+  speciesRestriction: [Milky]
+  sprites:
+  - sprite: _ScavPrototype/Mobs/Species/Milky/scars.rsi
+    state: milky_ears_scar_right
+
+- type: marking
+  id: MilkyEarScarLeft
+  bodyPart: HeadSide
+  markingCategory: HeadSide
+  forcedColoring: true
+  followSkinColor: true
+  speciesRestriction: [Milky]
+  sprites:
+  - sprite: _ScavPrototype/Mobs/Species/Milky/scars.rsi
+    state: milky_ears_scar_left
+
+- type: marking
+  id: MilkyScarChestDiagonal
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Milky]
+  forcedColoring: true
+  sprites:
+  - sprite: _ScavPrototype/Mobs/Species/Milky/scars.rsi
+    state: scar_chest_diagonal
+
+- type: marking
+  id: MilkyScarChestVertical
+  bodyPart: Chest
+  markingCategory: Chest
+  speciesRestriction: [Milky]
+  forcedColoring: true
+  sprites:
+  - sprite: _ScavPrototype/Mobs/Species/Milky/scars.rsi
+    state: scar_chest_vertical
+
+- type: marking
+  id: MilkyScarLeftEye
+  bodyPart: HeadTop
+  markingCategory: Head
+  speciesRestriction: [Milky]
+  forcedColoring: true
+  sprites:
+  - sprite: _ScavPrototype/Mobs/Species/Milky/scars.rsi
+    state: scar_lefteye
+
+- type: marking
+  id: MilkyScarRightEye
+  bodyPart: HeadTop
+  markingCategory: Head
+  speciesRestriction: [Milky]
+  forcedColoring: true
+  sprites:
+  - sprite: _ScavPrototype/Mobs/Species/Milky/scars.rsi
+    state: scar_righteye

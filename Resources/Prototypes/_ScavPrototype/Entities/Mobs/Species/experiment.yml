@@ -24,6 +24,11 @@
   - type: Speech
     speechSounds: MaleSpeciman
     allowedEmotes: [ 'Bark', 'Growl' ]
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodYellowMeat
+      amount: 5
   - type: DamageVisuals
     damageOverlayGroups:
       Brute:

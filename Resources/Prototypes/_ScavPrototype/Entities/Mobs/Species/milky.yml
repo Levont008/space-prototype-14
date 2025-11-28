@@ -24,6 +24,11 @@
   - type: Speech
     speechSounds: MaleSpeciman
     allowedEmotes: [ 'Bark', 'Growl' ]
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodYellowMeat
+      amount: 4
   - type: DamageVisuals
     damageOverlayGroups:
       Brute:
@@ -80,7 +85,7 @@
     baseDecayRate: 0.033
     starvationDamage:
       types:
-        Bloodloss: 0.75
+        Bloodloss: 0.7
         Cold: 0.05
   - type: Thirst
     baseDecayRate: 0.17
@@ -94,8 +99,8 @@
     - SpecimanCraft
     - AnomalyHost
   - type: PointLight
-    radius: 1.4
-    energy: 0.4
+    radius: 1.3
+    energy: 0.35
     color: "#a1d5e6"
   - type: Fixtures
     fixtures:

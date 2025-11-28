@@ -119,7 +119,7 @@
   id: SpecimanScarChestDiagonal
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Speciman, Milky]
+  speciesRestriction: [Speciman]
   forcedColoring: true
   sprites:
   - sprite: _ScavPrototype/Mobs/Species/Speciman/scars.rsi
@@ -129,7 +129,7 @@
   id: SpecimanScarChestVertical
   bodyPart: Chest
   markingCategory: Chest
-  speciesRestriction: [Speciman, Milky]
+  speciesRestriction: [Speciman]
   forcedColoring: true
   sprites:
   - sprite: _ScavPrototype/Mobs/Species/Speciman/scars.rsi
