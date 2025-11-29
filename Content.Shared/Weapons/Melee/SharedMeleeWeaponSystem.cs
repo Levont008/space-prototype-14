@@ -42,6 +42,9 @@ using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using ItemToggleMeleeWeaponComponent = Content.Shared.Item.ItemToggle.Components.ItemToggleMeleeWeaponComponent;
 
+//Space Prototype Change
+using Content.Shared.ScavPrototype.NewMedical.Targeting;
+
 namespace Content.Shared.Weapons.Melee;
 
 public abstract class SharedMeleeWeaponSystem : EntitySystem
@@ -543,7 +546,15 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
 
-        if (!Damageable.TryChangeDamage(target.Value, modifiedDamage, out var damageResult, origin:user, ignoreResistances:resistanceBypass))
+        //Space Prototype Changes Start
+        var _targetPart = TargetBodyPart.All;
+        if (TryComp(user, out TargetingComponent? targeting))
+        {
+            _targetPart = targeting.Target;
+        }
+        //Space Prototype Changes End
+
+        if (!Damageable.TryChangeDamage(target.Value, modifiedDamage, out var damageResult, origin:user, ignoreResistances:resistanceBypass, targetPart:_targetPart)) //Space Prototype Change
         {
             // If the target has stamina and is taking blunt damage, they should also take stamina damage based on their blunt to stamina factor
             if (damageResult.DamageDict.TryGetValue("Blunt", out var bluntDamage))
@@ -697,7 +708,15 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             RaiseLocalEvent(entity, attackedEvent);
             var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
 
-            var damageResult = Damageable.ChangeDamage(entity, modifiedDamage, origin: user, ignoreResistances: resistanceBypass);
+            //Space Prototype Changes Start
+            var _targetPart = TargetBodyPart.All;
+            if (TryComp(user, out TargetingComponent? targeting))
+            {
+                _targetPart = targeting.Target;
+            }
+            //Space Prototype Changes End
+
+            var damageResult = Damageable.ChangeDamage(entity, modifiedDamage, origin: user, ignoreResistances: resistanceBypass, targetPart: _targetPart); //Space Prototype Change
 
             if (damageResult.GetTotal() > FixedPoint2.Zero)
             {
