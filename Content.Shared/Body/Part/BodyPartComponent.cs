@@ -20,9 +20,16 @@ public sealed partial class BodyPartComponent : Component
     [DataField, AutoNetworkedField]
     public EntityUid? Body;
 
-    //SpacePrototype Change
+    //SpacePrototype Changes start
     [DataField]
     public BodyPartComposition PartComposition = BodyPartComposition.Organic;
+
+    [DataField, AutoNetworkedField]
+    public float MaxDamage = 100f;
+
+    [DataField, AutoNetworkedField]
+    public float Integrity = 1f;
+    //SpacePrototype Changes end
 
     [DataField, AutoNetworkedField]
     public BodyPartType PartType = BodyPartType.Other;
