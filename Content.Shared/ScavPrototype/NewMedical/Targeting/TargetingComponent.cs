@@ -27,7 +27,10 @@ public sealed partial class TargetingComponent : Component
         {
             TargetBodyPart.Torso, new Dictionary<TargetBodyPart, float>
             {
-                { TargetBodyPart.Torso, 1f }, // If you change this, suicide system won't work properly. So I won't even be able to ask you to kill yourself for doing this.
+                { TargetBodyPart.Torso, 0.8f },
+                { TargetBodyPart.Groin, 0.1f },
+                { TargetBodyPart.RightArm, 0.05f },
+                { TargetBodyPart.LeftArm, 0.05f },
             }
         },
         {

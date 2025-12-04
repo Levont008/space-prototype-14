@@ -9,6 +9,7 @@ using Robust.Client.Input;
 using Robust.Client.UserInterface;
 using Robust.Shared.Input;
 using Robust.Shared.Timing;
+using Content.Shared.ScavPrototype.NewMedical.Woundable.Components;
 
 namespace Content.Client.ScavPrototype.NewMedical.UserInterface.PartStatus.Widgets;
 
@@ -16,7 +17,7 @@ namespace Content.Client.ScavPrototype.NewMedical.UserInterface.PartStatus.Widge
 public sealed partial class PartStatusControl : UIWidget
 {
     [Dependency] private readonly IGameTiming _timing = default!;
-    private readonly Dictionary<TargetBodyPart, TextureRect> _partStatusControls;
+    private readonly Dictionary<string, TextureRect> _partStatusControls;
     private readonly PartStatusUIController _controller;
     public event Action<GUIBoundKeyEventArgs>? OnMouseDown;
     public PartStatusControl()
@@ -25,32 +26,32 @@ public sealed partial class PartStatusControl : UIWidget
         RobustXamlLoader.Load(this);
 
         _controller = UserInterfaceManager.GetUIController<PartStatusUIController>();
-        _partStatusControls = new Dictionary<TargetBodyPart, TextureRect>
+        _partStatusControls = new Dictionary<string, TextureRect>
         {
-            { TargetBodyPart.Head, DollHead },
-            { TargetBodyPart.Torso, DollTorso },
-            { TargetBodyPart.Groin, DollGroin },
-            { TargetBodyPart.LeftArm, DollLeftArm },
-            { TargetBodyPart.LeftHand, DollLeftHand },
-            { TargetBodyPart.RightArm, DollRightArm },
-            { TargetBodyPart.RightHand, DollRightHand },
-            { TargetBodyPart.LeftLeg, DollLeftLeg },
-            { TargetBodyPart.LeftFoot, DollLeftFoot },
-            { TargetBodyPart.RightLeg, DollRightLeg },
-            { TargetBodyPart.RightFoot, DollRightFoot },
+            { "head", DollHead },
+            { "chest", DollTorso },
+            { "leftarm", DollGroin },
+            { "rightarm", DollLeftArm },
+            { "lefthand", DollLeftHand },
+            { "rightarm", DollRightArm },
+            { "righthand", DollRightHand },
+            { "leftleg", DollLeftLeg },
+            { "leftfoot", DollLeftFoot },
+            { "rightleg", DollRightLeg },
+            { "rightfoot", DollRightFoot },
         };
         MouseFilter = MouseFilterMode.Stop;
         //OnKeyBindDown += OnClicked;
     }
 
-    public void SetTextures(IEnumerable<(TargetBodyPart targetPart, BodyPartComponent Component)> parts)
+    public void SetTextures(List<(BodyPartType type, BodyPartSymmetry symmetry, float integrity)> partsWoundable)
     {
-        foreach (var (targetPart, bodyPart) in parts)
+        foreach (var (type, symmetry, integrity) in partsWoundable)
         {
-            string enumName = Enum.GetName(typeof(TargetBodyPart), targetPart) ?? "Unknown";
-            int enumValue = (int) (Math.Abs(bodyPart.Integrity-1)*6);
-            var texture = new SpriteSpecifier.Rsi(new ResPath($"/Textures/_ScavPrototype/Interface/PartsStatus/{enumName.ToLowerInvariant()}.rsi"), $"{enumName.ToLowerInvariant()}_{enumValue}");
-            _partStatusControls[targetPart].Texture = _controller.GetTexture(texture);
+            string enumName = GetBodyPartName(type, symmetry);
+            int enumValue = (int) (Math.Abs(integrity-1)*6);
+            var texture = new SpriteSpecifier.Rsi(new ResPath($"/Textures/_ScavPrototype/Interface/PartsStatus/{enumName}.rsi"), $"{enumName}_{enumValue}");
+            _partStatusControls[enumName].Texture = _controller.GetTexture(texture);
         }
     }
 
@@ -62,4 +63,22 @@ public sealed partial class PartStatusControl : UIWidget
 
     public void SetVisible(bool visible) => this.Visible = visible;
 
+    public string GetBodyPartName(BodyPartType type, BodyPartSymmetry symmetry)
+    {
+        return (type, symmetry) switch
+        {
+            (BodyPartType.Head, _) => "head",
+            (BodyPartType.Torso, _) => "chest",
+            (BodyPartType.Groin, _) => "head",
+            (BodyPartType.Arm, BodyPartSymmetry.Left) => "leftarm",
+            (BodyPartType.Arm, BodyPartSymmetry.Right) => "rightarm",
+            (BodyPartType.Hand, BodyPartSymmetry.Left) => "lefthand",
+            (BodyPartType.Hand, BodyPartSymmetry.Right) => "righthand",
+            (BodyPartType.Leg, BodyPartSymmetry.Left) => "leftleg",
+            (BodyPartType.Leg, BodyPartSymmetry.Right) => "rightleg",
+            (BodyPartType.Foot, BodyPartSymmetry.Left) => "leftfoot",
+            (BodyPartType.Foot, BodyPartSymmetry.Right) => "rightfoot",
+            _ => "Unknown",
+        };
+    }
 }

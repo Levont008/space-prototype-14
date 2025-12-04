@@ -11,6 +11,7 @@
   components:
   # Space Prototype Changes start
   - type: Targeting
+  - type: Woundable
   # Space Prototype Changes end
   - type: Sprite
     layers:
