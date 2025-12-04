@@ -30,8 +30,8 @@ public sealed partial class PartStatusControl : UIWidget
         {
             { "head", DollHead },
             { "chest", DollTorso },
-            { "leftarm", DollGroin },
-            { "rightarm", DollLeftArm },
+            { "groin", DollGroin },
+            { "leftarm", DollLeftArm },
             { "lefthand", DollLeftHand },
             { "rightarm", DollRightArm },
             { "righthand", DollRightHand },
@@ -69,7 +69,7 @@ public sealed partial class PartStatusControl : UIWidget
         {
             (BodyPartType.Head, _) => "head",
             (BodyPartType.Torso, _) => "chest",
-            (BodyPartType.Groin, _) => "head",
+            (BodyPartType.Groin, _) => "groin",
             (BodyPartType.Arm, BodyPartSymmetry.Left) => "leftarm",
             (BodyPartType.Arm, BodyPartSymmetry.Right) => "rightarm",
             (BodyPartType.Hand, BodyPartSymmetry.Left) => "lefthand",

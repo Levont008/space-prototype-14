@@ -557,16 +557,19 @@ public sealed partial class DamageableSystem
                 parentDamageable.Damage.DamageDict[type] = FixedPoint2.Zero;
 
             // Sum up damage from all body parts
-            if (!_damageableQuery.TryComp(bodyPartUid, out var partDamageable))
-                return false;
-
-            foreach (var (type, value) in partDamageable.Damage.DamageDict)
+            foreach (var (partId, _) in _body.GetBodyChildren(body))
             {
-                if (value == 0)
+                if (!_damageableQuery.TryComp(partId, out var partDamageable))
                     continue;
 
-                if (parentDamageable.Damage.DamageDict.TryGetValue(type, out var existing))
-                     parentDamageable.Damage.DamageDict[type] = existing + value;
+                foreach (var (type, value) in partDamageable.Damage.DamageDict)
+                {
+                    if (value == 0)
+                        continue;
+
+                    if (parentDamageable.Damage.DamageDict.TryGetValue(type, out var existing))
+                        parentDamageable.Damage.DamageDict[type] = existing + value;
+                }
             }
 
             // Raise the damage changed event on the parent

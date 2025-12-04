@@ -45,6 +45,7 @@ public abstract class SharedWoundableSystem : EntitySystem
     public virtual void UpdateWoundable(EntityUid uid)
     {
         if (!TryComp<BodyComponent>(uid, out var body)
+            || body.RootContainer == null
             || !TryComp<WoundableComponent>(uid, out var woundable))
             return;
 
@@ -59,8 +60,5 @@ public abstract class SharedWoundableSystem : EntitySystem
         }
 
         woundable.PartsWoundable = _partsWoundable;
-
-        Dirty(uid, woundable);
-        RaiseNetworkEvent(new TargetIntegrityChangeEvent(GetNetEntity(uid)), uid);
     }
 }
