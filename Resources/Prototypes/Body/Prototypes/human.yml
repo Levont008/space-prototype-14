@@ -15,11 +15,16 @@
       connections:
       - right_arm
       - left_arm
-      - right_leg
-      - left_leg
+      - groin
       organs:
         heart: OrganHumanHeart
         lungs: OrganHumanLungs
+    groin:
+      part: GroinHuman
+      connections:
+      - right_leg
+      - left_leg
+      organs:
         stomach: OrganHumanStomach
         liver: OrganHumanLiver
         kidneys: OrganHumanKidneys

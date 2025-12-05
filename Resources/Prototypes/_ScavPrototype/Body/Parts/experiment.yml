@@ -21,6 +21,11 @@
     state: "torso_m"
 
 - type: entity
+  id: GroinSpeciman
+  name: "Speciman groin"
+  parent: [PartSpeciman, BaseGroin]
+
+- type: entity
   id: HeadSpeciman
   name: "Speciman head"
   parent: [PartSpeciman, BaseHead]
