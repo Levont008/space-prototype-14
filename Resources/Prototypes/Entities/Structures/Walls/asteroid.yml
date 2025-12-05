@@ -6,12 +6,12 @@
 #Asteroid rock
 - type: entity
   id: AsteroidRock
-  parent: BaseWall
+  parent: BaseStructure
   name: asteroid rock
   description: A rocky asteroid.
   components:
+  - type: Occluder
   - type: Transform
-    noRot: true
   - type: IconSmooth
     key: walls
     mode: NoSprite
@@ -21,6 +21,7 @@
     state: rock_asteroid
   - type: Sprite
     sprite: Structures/Walls/rock.rsi
+    drawdepth: Walls
     layers:
     - state: rock_asteroid
     - map: [ "enum.EdgeLayer.South" ]
@@ -59,6 +60,33 @@
         layer:
         - WallLayer
         density: 2000
+  - type: Anchorable
+    flags:
+    - Anchorable
+  - type: Rotatable
+  - type: RangedDamageSound
+    soundGroups:
+      Brute:
+        collection:
+          MetalBulletImpact
+    soundTypes:
+      Heat:
+        collection:
+          MetalLaserImpact
+  - type: Tag
+    tags:
+    - Wall
+  - type: IsRoof
+  - type: PlacementReplacement
+    key: walls
+  - type: Physics
+    bodyType: Static
+  - type: StaticPrice
+    price: 75
+  - type: RadiationBlocker
+    resistance: 2
+  - type: BlockWeather
+  - type: SunShadowCast
 
 - type: entity
   abstract: true
