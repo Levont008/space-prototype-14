@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Made by Lev008 & resprited by inksansik(Discord) for Space Prototype",
+  "copyright": "Made by inksansik(Discord) for Space Prototype",
   "size": {
     "x": 32,
     "y": 32
@@ -11,13 +11,7 @@
       "name": "icon"
     },
     {
-      "name": "locked"
-    },
-    {
-      "name": "unlocked"
-    },
-    {
-      "name": "equipped-NECK",
+      "name": "equipped-HAND",
       "directions": 4
     },
     {
