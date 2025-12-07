@@ -1,0 +1,25 @@
+- type: entity
+  id: mittsblue-white
+  name: бело-голубые митенки
+  description: Никогда не путайте их с минетками...
+  parent: ClothingHandsBase
+  components:
+  - type: Sprite
+    sprite: _ScavPrototype/Clothing/Multiple/Mitts/mittsblue-white.rsi
+    layers:
+    - state: icon
+  - type: Fiber
+    fiberColor: fibers-white
+  - type: Item
+    size: Small
+
+- type: entity
+  id: mittsblack-pink
+  name: черно-розовые митенки
+  description: Говорят, эти митенки носила знаменитая K-pop группа.
+  parent:  mittsblue-white
+  components:
+  - type: Sprite
+    sprite: _ScavPrototype/Clothing/Multiple/Mitts/mittsblack-pink.rsi
+    layers:
+    - state: icon
