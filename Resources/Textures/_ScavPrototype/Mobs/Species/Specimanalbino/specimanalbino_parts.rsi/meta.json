@@ -1,0 +1,23 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made by inksansik(Discord) for Space Prototype",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "ears_speciman_primary",
+            "directions": 4
+        },
+        {
+            "name": "ears_speciman_secondary",
+            "directions": 4
+        },
+        {
+            "name": "tail_speciman_base",
+            "directions": 4
+        }
+    ]
+}

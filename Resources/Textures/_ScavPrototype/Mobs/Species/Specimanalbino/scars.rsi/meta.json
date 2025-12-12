@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made by inksansik(Discord) for Space Prototype",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "speciman_primaryears_scar_left",
+            "directions": 4
+        },
+        {
+            "name": "speciman_primaryears_scar_right",
+            "directions": 4
+        },
+        {
+            "name": "scar_chest_diagonal",
+            "directions": 4
+        },
+        {
+            "name": "scar_chest_vertical",
+            "directions": 4
+        },
+        {
+            "name": "scar_lefteye",
+            "directions": 4
+        },
+        {
+            "name": "scar_righteye",
+            "directions": 4
+        }
+    ]
+}

@@ -1,0 +1,29 @@
+- type: entity
+  name: коробка транквилизаторов
+  parent: BoxCardboard
+  id: BoxInjectorShellTranquilizer
+  description: Эта коробка наполнена транквилизаторами.
+  components:
+  - type: Sprite
+    layers:
+      - state: box
+      - state: darts
+  - type: StorageFill
+    contents:
+      - id: InjectorShellTranquilizer
+        amount: 9
+
+- type: entity
+  name: коробка пробуждающих дротиков
+  parent: BoxCardboard
+  id: BoxInjectorShellAntisomnin
+  description: Эта коробка наполнена пробуждающими дротиками.
+  components:
+  - type: Sprite
+    layers:
+      - state: box
+      - state: darts
+  - type: StorageFill
+    contents:
+      - id: InjectorShellAntisomnin
+        amount: 9

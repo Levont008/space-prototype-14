@@ -1,0 +1,49 @@
+- type: body
+  id: Albino
+  name: "Albino"
+  root: torso
+  slots:
+    head:
+      part: HeadAlbino
+      connections:
+      - torso
+      organs:
+        brain: OrganHumanBrain
+        eyes: OrganHumanEyes
+    torso:
+      part: TorsoAlbino
+      connections:
+      - right_arm
+      - left_arm
+      - right_leg
+      - left_leg
+      organs:
+        heart: OrganSpecimanHeart
+        lungs: OrganHumanLungs
+        stomach: OrganSpecimanStomach
+        liver: OrganSpecimanLiver
+        kidneys: OrganHumanKidneys
+    right_arm:
+      part: RightArmAlbino
+      connections:
+      - right_hand
+    left_arm:
+      part: LeftArmAlbino
+      connections:
+      - left_hand
+    right_hand:
+      part: RightHandAlbino
+    left_hand:
+      part: LeftHandAlbino
+    right_leg:
+      part: RightLegAlbino
+      connections:
+      - right_foot
+    left_leg:
+      part: LeftLegAlbino
+      connections:
+      - left_foot
+    right_foot:
+      part: RightFootAlbino
+    left_foot:
+      part: LeftFootAlbino

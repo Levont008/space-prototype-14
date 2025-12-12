@@ -42,3 +42,20 @@
   components:
   - type: Sprite
     state: rubber
+
+- type: entity
+  categories: [ HideSpawnMenu ]
+  parent: BaseBullet
+  id: BulletAntiMaterielTraumatic
+  name: Патрон (.60 травматический)
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 10
+    penetrationThreshold: 360
+    penetrationDamageTypeRequirement:
+    - Structural
+  - type: StaminaDamageOnCollide
+    damage: 150
+

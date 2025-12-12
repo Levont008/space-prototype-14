@@ -1,0 +1,31 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made by inksansik(Discord) for Space Prototype",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "gauze_righteye",
+            "directions": 4
+        },
+        {
+            "name": "gauze_lefteye",
+            "directions": 4
+        },
+        {
+            "name": "gauze_shoulder",
+            "directions": 4
+        },
+        {
+            "name": "gauze_leftarm",
+            "directions": 4
+        },
+        {
+            "name": "gauze_rightarm",
+            "directions": 4
+        }
+    ]
+}
