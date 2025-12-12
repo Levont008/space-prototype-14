@@ -1,8 +1,8 @@
 - type: entity
-  id: mittsblue-white
+  id: MittsBlueWhite
   name: бело-голубые митенки
   description: Никогда не путайте их с минетками...
-  parent: ClothingHandsBase
+  parent: Clothing
   components:
   - type: Sprite
     sprite: _ScavPrototype/Clothing/Multiple/Mitts/mittsblue-white.rsi
@@ -10,14 +10,30 @@
     - state: icon
   - type: Fiber
     fiberColor: fibers-white
+  - type: Clothing
+    slots: [gloves]
+  - type: Edible
+    requiresSpecialDigestion: true
   - type: Item
     size: Small
+    storedRotation: -90
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 10
+  - type: Tag
+    tags:
+    - ClothMade
+    - WhitelistChameleon
 
 - type: entity
-  id: mittsblack-pink
+  id: MittsBlackPink
   name: черно-розовые митенки
   description: Говорят, эти митенки носила знаменитая K-pop группа.
-  parent:  mittsblue-white
+  parent: MittsBlueWhite
   components:
   - type: Sprite
     sprite: _ScavPrototype/Clothing/Multiple/Mitts/mittsblack-pink.rsi
