@@ -138,7 +138,7 @@
 - type: marking
   id: SpecimanScarLeftEye
   bodyPart: HeadTop
-  markingCategory: Head
+  markingCategory: Overlay
   speciesRestriction: [Speciman]
   forcedColoring: true
   sprites:
@@ -148,7 +148,7 @@
 - type: marking
   id: SpecimanScarRightEye
   bodyPart: HeadTop
-  markingCategory: Head
+  markingCategory: Overlay
   speciesRestriction: [Speciman]
   forcedColoring: true
   sprites:
